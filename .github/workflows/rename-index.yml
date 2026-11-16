@@ -1,0 +1,19 @@
+name: Rename index file
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename index 2.html to index.html
+        run: |
+          git mv "index 2.html" index.html
+          git config user.name "itscoolgroup"
+          git config user.email "itscoolgroup@users.noreply.github.com"
+          git commit -m "Rename index 2.html to index.html"
+          git push
